@@ -10,8 +10,13 @@ const app = express();
 
 
 app.use(cors());
+// process.env goes to env to find port
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
+// the getMovies is a function...so it picks from the function. endpoint is first
+app.get('/', (request, response) => {
+  response.status(200).send('Welcome to my server.');
+});
 
 app.get('/movies', getMovies);
 app.get('/weather', weatherHandler);
